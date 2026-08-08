@@ -31,7 +31,7 @@ jobs:
       - name: Build Index
         run: bun run build:index
       - name: Move Index
-        run: mv notes public/notes
+        run: cp -r notes public/notes
       - name: Build
         run: bun run build
       - name: Upload artifact
