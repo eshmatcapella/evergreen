@@ -1,3 +1,4 @@
+import fs from "node:fs/promises"
 import path from "node:path"
 
 import {defineConfig} from "vite"
@@ -5,6 +6,15 @@ import react from "@vitejs/plugin-react"
 import ViteRestart from "vite-plugin-restart"
 
 import {buildNoteIndex} from "./scripts/build-note-index.mjs"
+
+const copyNotesPlugin = () => ({
+  name: "copy-notes",
+  async writeBundle() {
+    const src = path.resolve("notes")
+    const dest = path.resolve("_site", "notes")
+    await fs.cp(src, dest, {recursive: true, force: true})
+  },
+})
 
 const noteIndexPlugin = () => {
   let debounceTimer
@@ -70,6 +80,7 @@ const noteIndexPlugin = () => {
 export default defineConfig({
   plugins: [
     noteIndexPlugin(),
+    copyNotesPlugin(),
     ViteRestart({
       // changes in these paths will restart the server automatically
       restart: ["src/**", "public/**", "index.html", "config.json"],
