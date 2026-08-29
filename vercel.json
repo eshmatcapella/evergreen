@@ -1,7 +1,8 @@
 {
-  "buildCommand": "npm run vercel",
+  "buildCommand": "npm run build",
   "cleanUrls": true,
-  "framework": "eleventy",
+  "framework": "vite",
+  "outputDirectory": "_site",
   "headers": [
     {
       "source": "/(.*)",
