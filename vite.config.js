@@ -93,5 +93,5 @@ export default defineConfig({
     outDir: "_site",
   },
   // needed for gh-pages deployment
-  base: "./",
+  base: "/evergreen/",
 })
