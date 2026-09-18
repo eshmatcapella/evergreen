@@ -59,8 +59,14 @@
   }
 }
 
-#header .userState {
+#header .siteLogo {
   margin-left: auto;
+  height: 28px;
+  width: auto;
+}
+
+#header .userState {
+  margin-left: 16px;
 }
 
 #header .userState .anonymousNotice {
